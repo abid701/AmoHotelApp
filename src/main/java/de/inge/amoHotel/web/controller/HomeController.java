@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Controller
 public class HomeController {
-
+// Here should be the documentation in German
     @GetMapping("/showHomePage") // localhost:8081/showHomePage
     public String passParametersWithModel(Model model) {
         model.addAttribute("message", "Die erste Seite´funktioniert");
