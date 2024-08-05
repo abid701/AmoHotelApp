@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Meine Kunden Liste</title>
+</head>
+<body>
+<div>Web Application. Passed parameter : </br>
+    <span>Hallo</span>
+    <table>
+        <tr th:each="kunden : ${kundenList}">
+            <td th:text="${kunden.kundenNr}">kundenNr</td>
+            <td th:text="${kunden.vorname}">Vorname</td>
+            <td th:text="${kunden.nachname}">Nachname</td>
+            <td th:text="${kunden.email}">Email</td>
+            <td th:text="${kunden.adresse}">adresse</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

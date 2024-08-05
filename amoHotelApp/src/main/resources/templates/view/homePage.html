@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Meine Zimmer Liste</title>
+</head>
+<body>
+<div>Web Application. Passed parameter : </br>
+    <span>Hallo</span>
+    <table>
+        <tr th:each="zimmer : ${zimmerList}">
+            <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
+            <td th:text="${zimmer.ausstattung}">Ausstattung</td>
+            <!--       <td th:text="${zimmer.details}">Details</td> -->
+                   <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
+               </tr>
+           </table>
+</div>
+<!--
+<div th:object="${zimmer}">
+    <p th:text="${zimmer.zimmerNr}">Zimmer Nr.</p>
+    <p th:text="${zimmer.ausstattung}">Ausstattung</p>
+    <p>Details:</p>
+    <ul th:each="detail : ${zimmer.details}">
+        <li th:text="${detail}">Detail</li>
+    </ul>
+    <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
+</div>
+
+<table>
+    <tr th:each="zimmer : ${zimmerList}">
+        <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
+        <td th:text="${zimmer.ausstattung}">Ausstattung</td>
+        <td>
+            <ul>
+                <li th:each="detail : ${zimmer.details}" th:text="${detail}">Detail</li>
+            </ul>
+        </td>
+        <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
+    </tr>
+</table>
+-->
+<!--
+<table>
+    <tr th:each="zimmer : ${zimmerList}">
+        <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
+        <td th:text="${zimmer.ausstattung}">Ausstattung</td>
+        <td>
+            <span th:each="detail : ${zimmer.details}" th:text="${detail}">,</span>
+        </td>
+        <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
+    </tr>
+</table>
+
+<table>
+    <tr th:each="zimmer : ${zimmerList}">
+        <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
+        <td th:text="${zimmer.ausstattung}">Ausstattung</td>
+        <td>
+            <span th:each="detail : ${zimmer.getDetailsAsList()}" th:text="${detail}">,</span>
+        </td>
+        <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
+    </tr>
+</table> -->
+</body>
+</html>
+
