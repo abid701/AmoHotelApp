@@ -7,13 +7,14 @@
 </head>
 <body>
 
-<h1>Amo Hotel Rezeption
-    <div id="three_line_menu" th:onclick="myFunction(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-    </div>
-</h1>
+    <header>
+        Amo Hotel Rezeption<img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
+        <div id="three_line_menu" th:onclick="myFunction(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </header>
 <div class="search_filter">
     <input type="text" id="search_input" placeholder="Zimmer Nummer suchen" onkeyup="filterZimmer()">
 
@@ -26,22 +27,28 @@
     </select>
 </div>
 <div th:fragment="zimmer">
-
-    <div id="logo"><img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="200px" style="margin-bottom: 20px;"></div>
+    <div class="row">
+        <div id="logo">
+            <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="25%"
+            style="display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 10%;">
+        </div>
+    </div>
 
     <div class="zimmer-container">
-        <div th:each="zimmer : ${zimmerList}" class="zimmer">
+        <div th:each="zimmer, imageName : ${zimmerList}" class="zimmer">
             <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span>
             <p th:text="${zimmer.ausstattung}">Ausstattung</p>
             <p th:text="${zimmer.details}">Details</p>
             <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
-            <div th:with="varName=${'zimmer.zimmerNr'}"></div>
-           <!-- TODO: mit dieser img element, muss jedes mal ein neues foto angezeigt werden.
-           TODO: Dafür bracht man javascript   -->
-            <img th:src="@{/images/'${zimmer.zimmerNr}' + '.jpeg'}" alt="Zimmer Logo" width="200px">
-         <!-- es ist nur ein beispiel:  <script th:src="@{${bizJs} + '/static/js'}"></script>  -->
-        <!--  beispiel:  <p th:text="${zimmer.zimmerNr} + '.jpeg'" ></p> -->
-            <button th:onclick="|booking(${zimmer.zimmerNr})|">Jetzt buchen</button>
+            <img th:src="@{/images/homePagePics/{index}.jpg(index=${imageName.index + 1})}" alt="Zimmer Logo"
+                 width="100px" height="100px">
+            <div>
+                <button th:onclick="|booking(${zimmer.zimmerNr})|">Jetzt buchen</button>
+                <button>Mehr</button>
+            </div>
         </div>
     </div>
 </div>
