@@ -8,7 +8,6 @@ import java.io.Serializable;
 @Table(name = "kunden")
 public class Kunden implements Serializable {
     @Id
-    // soll ich die Primary Key von hier Auto increment machen oder von database?
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "int", name = "kunden_nr")
 
@@ -24,7 +23,8 @@ public class Kunden implements Serializable {
 
     public Kunden() {}
 
-/*    public Kunden(String vorname, String email) {
+    /* TODO: Muss entfernen werden, wenn nicht nötig.
+    public Kunden(String vorname, String email) {
         this.vorname = vorname;
         this.email = email;
     }
