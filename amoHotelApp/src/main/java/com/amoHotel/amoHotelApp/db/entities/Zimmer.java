@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
+
 @Entity
 @Table(name = "zimmer")
 public class Zimmer implements Serializable {
@@ -14,8 +15,7 @@ public class Zimmer implements Serializable {
     private Long zimmerNr;
 
     private String ausstattung;
-   //TODO: diese annotaion ist nur für testen, muss entfernen werden
-    //@ElementCollection
+
     @Column(name = "details")
     private String details;
 
@@ -32,15 +32,24 @@ public class Zimmer implements Serializable {
         this.zimmerNr = zimmerNr;
     }
 
+    // Fragen, ob es erklären braucht.
     public String getAusstattung() {
-        return ausstattung;
+        if (ausstattung.length() > 5){
+            return ausstattung.substring(0,1).toUpperCase() + ausstattung.substring(1, 7).toLowerCase()
+                    + ausstattung.substring(7, 8).toUpperCase() + ausstattung.substring(8).toLowerCase();
+        }
+        return ausstattung.substring(0,1).toUpperCase() + ausstattung.substring(1).toLowerCase();
     }
 
     public void setAusstattung(String ausstattung) {
         this.ausstattung = ausstattung;
     }
-
+    // Braucht es erklären?
     public String getDetails() {
+        details = details.replace("[", "");
+        details = details.replace("]", "");
+        details = details.replace("\"", " ");
+        details = details.replace(" , ", ", ").strip();
         return details;
     }
 
@@ -56,6 +65,14 @@ public class Zimmer implements Serializable {
         this.preisProNacht = preisProNacht;
     }
 
+    public Zimmer(Long zimmerNr, String ausstattung, String details, String preisProNacht) {
+        this.zimmerNr = zimmerNr;
+        this.ausstattung = ausstattung;
+        this.details = details;
+        this.preisProNacht = preisProNacht;
+    }
+
+
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Zimmer{");
@@ -66,5 +83,7 @@ public class Zimmer implements Serializable {
         sb.append('}');
         return sb.toString();
     }
+
+
 
 }
