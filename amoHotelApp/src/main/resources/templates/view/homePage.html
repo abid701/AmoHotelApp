@@ -2,65 +2,52 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Meine Zimmer Liste</title>
+    <link th:href="@{/styles/homePage.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/javascript/homePage.js}"></script>
 </head>
 <body>
-<div>Web Application. Passed parameter : </br>
-    <span>Hallo</span>
-    <table>
-        <tr th:each="zimmer : ${zimmerList}">
-            <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
-            <td th:text="${zimmer.ausstattung}">Ausstattung</td>
-            <!--       <td th:text="${zimmer.details}">Details</td> -->
-                   <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
-               </tr>
-           </table>
-</div>
-<!--
-<div th:object="${zimmer}">
-    <p th:text="${zimmer.zimmerNr}">Zimmer Nr.</p>
-    <p th:text="${zimmer.ausstattung}">Ausstattung</p>
-    <p>Details:</p>
-    <ul th:each="detail : ${zimmer.details}">
-        <li th:text="${detail}">Detail</li>
-    </ul>
-    <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
-</div>
 
-<table>
-    <tr th:each="zimmer : ${zimmerList}">
-        <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
-        <td th:text="${zimmer.ausstattung}">Ausstattung</td>
-        <td>
-            <ul>
-                <li th:each="detail : ${zimmer.details}" th:text="${detail}">Detail</li>
-            </ul>
-        </td>
-        <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
-    </tr>
-</table>
--->
-<!--
-<table>
-    <tr th:each="zimmer : ${zimmerList}">
-        <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
-        <td th:text="${zimmer.ausstattung}">Ausstattung</td>
-        <td>
-            <span th:each="detail : ${zimmer.details}" th:text="${detail}">,</span>
-        </td>
-        <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
-    </tr>
-</table>
+<h1>Amo Hotel Rezeption
+    <div id="three_line_menu" th:onclick="myFunction(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+</h1>
+<div class="search_filter">
+    <input type="text" id="search_input" placeholder="Zimmer Nummer suchen" onkeyup="filterZimmer()">
 
-<table>
-    <tr th:each="zimmer : ${zimmerList}">
-        <td th:text="${zimmer.zimmerNr}">ZimmerNr</td>
-        <td th:text="${zimmer.ausstattung}">Ausstattung</td>
-        <td>
-            <span th:each="detail : ${zimmer.getDetailsAsList()}" th:text="${detail}">,</span>
-        </td>
-        <td th:text="${zimmer.preisProNacht}">Preis Pro Nacht</td>
-    </tr>
-</table> -->
+    <select id="filter" onchange="filterZimmer()">
+        <option value="" disabled selected>Filtern</option>
+        <option value="alleZimmer">Alle Zimmer</option>
+        <option value="einzelZimmer">Einzel Zimmer</option>
+        <option value="doppelZimmer">Doppel Zimmer</option>
+        <option value="suite">Suite</option>
+    </select>
+</div>
+<div th:fragment="zimmer">
+
+    <div id="logo"><img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="200px" style="margin-bottom: 20px;"></div>
+
+    <div class="zimmer-container">
+        <div th:each="zimmer : ${zimmerList}" class="zimmer">
+            <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span>
+            <p th:text="${zimmer.ausstattung}">Ausstattung</p>
+            <p th:text="${zimmer.details}">Details</p>
+            <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
+            <div th:with="varName=${'zimmer.zimmerNr'}"></div>
+           <!-- TODO: mit dieser img element, muss jedes mal ein neues foto angezeigt werden.
+           TODO: Dafür bracht man javascript   -->
+            <img th:src="@{/images/'${zimmer.zimmerNr}' + '.jpeg'}" alt="Zimmer Logo" width="200px">
+         <!-- es ist nur ein beispiel:  <script th:src="@{${bizJs} + '/static/js'}"></script>  -->
+        <!--  beispiel:  <p th:text="${zimmer.zimmerNr} + '.jpeg'" ></p> -->
+            <button th:onclick="|booking(${zimmer.zimmerNr})|">Jetzt buchen</button>
+        </div>
+    </div>
+</div>
+<footer>
+    &copy; 2024 AmoHotel. All rights reserved.
+</footer>
 </body>
 </html>
 
