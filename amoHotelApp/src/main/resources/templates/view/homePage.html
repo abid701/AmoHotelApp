@@ -46,8 +46,8 @@
             <img th:src="@{/images/homePagePics/{index}.jpg(index=${imageName.index + 1})}" alt="Zimmer Logo"
                  width="100px" height="100px">
             <div>
-                <button th:onclick="|booking(${zimmer.zimmerNr})|">Jetzt buchen</button>
-                <button>Mehr</button>
+                <button th:href="@{/zimmerBuchen}">Jetzt buchen</button>
+                <a th:href="@{/zimmerDetails(zimmerNr=${zimmer.zimmerNr})}"><button>Mehr</button></a>
             </div>
         </div>
     </div>
