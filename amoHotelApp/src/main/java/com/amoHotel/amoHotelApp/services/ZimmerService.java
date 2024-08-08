@@ -5,6 +5,7 @@ import com.amoHotel.amoHotelApp.db.repositories.ZimmerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class ZimmerService {
     private final ZimmerRepository zimmerRepository;
@@ -13,4 +14,6 @@ public class ZimmerService {
     public ZimmerService(ZimmerRepository zimmerRepository){this.zimmerRepository = zimmerRepository;}
 
     public Iterable<Zimmer> getAllZimmer(){return zimmerRepository.findAll();}
+
+    public Zimmer findZimmerByNumber(int id){return zimmerRepository.findById(id).orElse(null);}
 }
