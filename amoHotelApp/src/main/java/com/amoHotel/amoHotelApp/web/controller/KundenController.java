@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class KundenController {
 
     private final KundenService kundenService;
-//    private List<Kunden> kundenList = new ArrayList<>();
 
     @Autowired
     public KundenController(KundenService kundenService) {
