@@ -10,9 +10,9 @@ import java.io.Serializable;
 public class Zimmer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "int", name = "zimmer_nr")
+    @Column(name = "zimmer_nr")
 
-    private Long zimmerNr;
+    private int zimmerNr;
 
     private String ausstattung;
 
@@ -24,11 +24,11 @@ public class Zimmer implements Serializable {
     public Zimmer() {
     }
 
-    public Long getZimmerNr() {
+    public int getZimmerNr() {
         return zimmerNr;
     }
 
-    public void setZimmerNr(Long zimmerNr) {
+    public void setZimmerNr(int zimmerNr) {
         this.zimmerNr = zimmerNr;
     }
 
@@ -65,7 +65,7 @@ public class Zimmer implements Serializable {
         this.preisProNacht = preisProNacht;
     }
 
-    public Zimmer(Long zimmerNr, String ausstattung, String details, String preisProNacht) {
+    public Zimmer(int zimmerNr, String ausstattung, String details, String preisProNacht) {
         this.zimmerNr = zimmerNr;
         this.ausstattung = ausstattung;
         this.details = details;
