@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Zimmer Details</title>
+    <link th:href="@{/styles/zimmerDetails.css}" rel="stylesheet" />
+</head>
+<body>
+
+<header>
+    Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
+    <a th:href="@{/homePage}" class="back-link">Zurück zum Home Page</a>
+    <h2>hello</h2>
+</header>
+<!-- Du kannst diese variablen benutzen jeder gibt informationen für spezifische zimmer -->
+<p th:text="${zimmer.ZimmerNr}"></p>
+<p th:text="${zimmer.ausstattung}"></p>
+<p th:text="${zimmer.details}"></p>
+<p th:text="${zimmer.preisProNacht}"></p>
+</body>
+</html>
