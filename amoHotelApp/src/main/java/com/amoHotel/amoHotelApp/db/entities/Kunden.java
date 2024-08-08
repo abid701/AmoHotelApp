@@ -9,9 +9,8 @@ import java.io.Serializable;
 public class Kunden implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "int", name = "kunden_nr")
-
-    private Long kundenNr;
+    @Column(name = "kunden_nr")
+    private int kundenNr;
 
     private String vorname;
 
@@ -39,11 +38,11 @@ public class Kunden implements Serializable {
         this.adresse = adresse;
     }
 */
-    public Long getKundenNr() {
+    public int getKundenNr() {
         return kundenNr;
     }
 
-    public void setKundenNr(Long kundenNr) {
+    public void setKundenNr(int kundenNr) {
         this.kundenNr = kundenNr;
     }
 
