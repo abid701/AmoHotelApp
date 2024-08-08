@@ -5,5 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ZimmerRepository extends CrudRepository<Zimmer, Long> {
+public interface ZimmerRepository extends CrudRepository<Zimmer, Integer> {
+    Zimmer findByZimmerNr(int zimmerNr);
 }
