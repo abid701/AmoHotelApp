@@ -3,6 +3,8 @@ package com.amoHotel.amoHotelApp.db.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "kunden")
@@ -20,6 +22,9 @@ public class Kunden implements Serializable {
 
     private String adresse;
 
+
+    @OneToMany(mappedBy = "kunden", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Buchung> buchungen = new HashSet<>();
     public Kunden() {}
 
     /* TODO: Muss entfernen werden, wenn nicht nötig.
@@ -78,15 +83,23 @@ public class Kunden implements Serializable {
         this.adresse = adresse;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Kunden{");
-        sb.append("kundenNr=").append(kundenNr);
-        sb.append(", vorname='").append(vorname).append('\'');
-        sb.append(", nachname='").append(nachname).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", adresse='").append(adresse).append('\'');
-        sb.append('}');
-        return sb.toString();
+    public Set<Buchung> getBuchungen() {
+        return buchungen;
     }
+
+    public void setBuchungen(Set<Buchung> buchungen) {
+        this.buchungen = buchungen;
+    }
+
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("Kunden{");
+//        sb.append("kundenNr=").append(kundenNr);
+//        sb.append(", vorname='").append(vorname).append('\'');
+//        sb.append(", nachname='").append(nachname).append('\'');
+//        sb.append(", email='").append(email).append('\'');
+//        sb.append(", adresse='").append(adresse).append('\'');
+//        sb.append('}');
+//        return sb.toString();
+//    }
 }
