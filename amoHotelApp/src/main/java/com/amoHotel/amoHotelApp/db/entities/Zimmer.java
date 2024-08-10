@@ -3,6 +3,8 @@ package com.amoHotel.amoHotelApp.db.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -21,7 +23,19 @@ public class Zimmer implements Serializable {
 
     private String preisProNacht;
 
+
+    @OneToMany(mappedBy = "zimmer", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Buchung> buchungen = new HashSet<>();
+
     public Zimmer() {
+    }
+
+    public Set<Buchung> getBuchungen() {
+        return buchungen;
+    }
+
+    public void setBuchungen(Set<Buchung> buchungen) {
+        this.buchungen = buchungen;
     }
 
     public int getZimmerNr() {
@@ -65,24 +79,26 @@ public class Zimmer implements Serializable {
         this.preisProNacht = preisProNacht;
     }
 
-    public Zimmer(int zimmerNr, String ausstattung, String details, String preisProNacht) {
-        this.zimmerNr = zimmerNr;
-        this.ausstattung = ausstattung;
-        this.details = details;
-        this.preisProNacht = preisProNacht;
-    }
 
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Zimmer{");
-        sb.append("zimmerNr=").append(zimmerNr);
-        sb.append(", ausstattung='").append(ausstattung).append('\'');
-        sb.append(", details='").append(details).append('\'');
-        sb.append(", preisProNacht='").append(preisProNacht).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
+//    public Zimmer(int zimmerNr, String ausstattung, String details, String preisProNacht) {
+//        this.zimmerNr = zimmerNr;
+//        this.ausstattung = ausstattung;
+//        this.details = details;
+//        this.preisProNacht = preisProNacht;
+//    }
+//
+//
+//    @Override
+//    public String toString() {
+//        final StringBuilder sb = new StringBuilder("Zimmer{");
+//        sb.append("zimmerNr=").append(zimmerNr);
+//        sb.append(", ausstattung='").append(ausstattung).append('\'');
+//        sb.append(", details='").append(details).append('\'');
+//        sb.append(", preisProNacht='").append(preisProNacht).append('\'');
+//        sb.append('}');
+//        return sb.toString();
+//    }
 
 
 
