@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Meine Zimmer Liste</title>
+    <title>Amo Hotel Rezeption</title>
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
     <link th:href="@{/styles/homePage.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <script type="text/javascript" th:src="@{/javascript/homePage.js}"></script>
 </head>
-<body>
+<body> <header>amo hotel</header>
 
     <header>
         Amo Hotel Rezeption<img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
@@ -15,8 +17,28 @@
             <div class="bar3"></div>
         </div>
     </header>
+
+    <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" id="logo">
+
+<!-- <div class="container">
+     <div class="slide">
+         <div class="item" style="background-image: url(/images/homePagePics/1.jpg);">
+             <div class="conten">
+                 <div class="name">Einzelzimmer</div>
+                 <div class="des">Das Einzelzimmer ist ideal für Alleinreisende, die Ruhe und Privatsphäre suchen.
+                     Es ist gemütlich eingerichtet und verfügt über ein bequemes Bett, einen Schreibtisch, einen Kleiderschrank und ein eigenes Bad.
+                     Ein großer Vorteil des Einzelzimmers ist die Ruhe, da es oft abseits der Hauptverkehrswege des Hotels liegt.
+                     Kostenloses WLAN und ein Flachbildfernseher gehören ebenfalls zur Ausstattung.
+                     Es bietet den perfekten Rückzugsort nach einem langen Tag.</div>
+                 <button>See More</button>
+             </div>
+         </div>
+     </div>
+ </div>-->
+
 <div class="search_filter">
     <input type="text" id="search_input" placeholder="Zimmer Nummer suchen" onkeyup="filterZimmer()">
+    <button id="suchen_button">Suchen</button>
 
     <select id="filter" onchange="filterZimmer()">
         <option value="" disabled selected>Filtern</option>
@@ -28,23 +50,22 @@
 </div>
 <div th:fragment="zimmer">
     <div class="row">
-        <div id="logo">
-            <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="25%"
-            style="display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 10%;">
-        </div>
+
+
+
     </div>
 
     <div class="zimmer-container">
         <div th:each="zimmer, imageName : ${zimmerList}" class="zimmer">
-            <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span>
-            <p th:text="${zimmer.ausstattung}">Ausstattung</p>
-            <p th:text="${zimmer.details}">Details</p>
-            <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
+
             <img th:src="@{/images/homePagePics/{index}.jpg(index=${imageName.index + 1})}" alt="Zimmer Logo"
-                 width="100px" height="100px">
+                 width="150px" height="150px"></br>
+
+            <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span></br><hr>
+            <i class="fa-solid fa-bed"></i> <p th:text="${zimmer.ausstattung}">Ausstattung</p>
+            <i class="fa fa-wifi"></i>   <i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> <p th:text="${zimmer.details}">Details</p>
+            <i class="fa fa-tag"></i> <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
+
             <div>
                 <button th:href="@{/zimmerBuchen}">Jetzt buchen</button>
                 <a th:href="@{/zimmerDetails(zimmerNr=${zimmer.zimmerNr})}"><button>Mehr</button></a>
