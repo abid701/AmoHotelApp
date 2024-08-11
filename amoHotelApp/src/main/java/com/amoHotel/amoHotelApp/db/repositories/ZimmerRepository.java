@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ZimmerRepository extends CrudRepository<Zimmer, Integer> {
-   // Zimmer findByZimmerNr(int zimmerNr);
 }
