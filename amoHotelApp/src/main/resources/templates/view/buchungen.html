@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link th:href="@{/styles/buchungen.css}" rel="stylesheet" />
     <title>Buchungen</title>
 </head>
 <body>
-
+<header>
+    Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
+</header>
+<main class="table" >
+    <section class="table_header"></section>
+    <section class="table_body">
+        <table>
+            <thead>
+            <tr>
+                <th>Kunden</th>
+                <th>Zimmer</th>
+                <th>Von</th>
+                <th>Bis</th>
+                <th>Stornierung</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <tr th:each="buchung : ${buchungen}">
+                    <td style="text-align: center" th:text="${buchung.kunden}"></td>
+                    <td style="text-align: center" th:text="${buchung.zimmer}"></td>
+                    <td style="text-align: center" th:text="${buchung.von}"></td>
+                    <td style="text-align: center"th:text="${buchung.bis}"></td>
+                    <td><button th:href="@{/}">Stornierung</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    &copy; 2024 AmoHotel. All rights reserved.
+</footer>
 </body>
 </html>
