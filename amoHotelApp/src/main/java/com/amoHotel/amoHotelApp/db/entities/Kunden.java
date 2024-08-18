@@ -25,24 +25,10 @@ public class Kunden implements Serializable {
 
     @OneToMany(mappedBy = "kunden", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Buchung> buchungen = new HashSet<>();
+
+
     public Kunden() {}
 
-    /* TODO: Muss entfernen werden, wenn nicht nötig.
-    public Kunden(String vorname, String email) {
-        this.vorname = vorname;
-        this.email = email;
-    }
-
-    public Kunden(Long kundenNr, String vorname, String nachname, String email, String adresse) {
-
-
-        this.kundenNr = kundenNr;
-        this.vorname = vorname;
-        this.nachname = nachname;
-        this.email = email;
-        this.adresse = adresse;
-    }
-*/
     public int getKundenNr() {
         return kundenNr;
     }
@@ -91,15 +77,4 @@ public class Kunden implements Serializable {
         this.buchungen = buchungen;
     }
 
-//    @Override
-//    public String toString() {
-//        final StringBuilder sb = new StringBuilder("Kunden{");
-//        sb.append("kundenNr=").append(kundenNr);
-//        sb.append(", vorname='").append(vorname).append('\'');
-//        sb.append(", nachname='").append(nachname).append('\'');
-//        sb.append(", email='").append(email).append('\'');
-//        sb.append(", adresse='").append(adresse).append('\'');
-//        sb.append('}');
-//        return sb.toString();
-//    }
 }

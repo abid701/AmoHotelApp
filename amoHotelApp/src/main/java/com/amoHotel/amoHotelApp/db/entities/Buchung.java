@@ -2,20 +2,16 @@ package com.amoHotel.amoHotelApp.db.entities;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 
 @Entity
 @Table(name = "buchung")
-public class Buchung {
+public class Buchung implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    /*@JoinColumn(name = "kunden_nr")
-    private Integer kundenNr;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "zimmer_nr") */
 
     @ManyToOne
     @JoinColumn(name = "kunden_nr", nullable = false)
@@ -25,9 +21,9 @@ public class Buchung {
     @JoinColumn(name = "zimmer_nr", nullable = false)
     private Zimmer zimmer;
 
-    private Date von;
+    private LocalDate von;
 
-    private Date bis;
+    private LocalDate bis;
 
     public Buchung() {
     }
@@ -40,63 +36,45 @@ public class Buchung {
         this.id = id;
     }
 
-    public Integer getKunden() {
+    public Integer getKundenNr() {
         return kunden.getKundenNr();
     }
 
-
+    public Kunden getKunden() {
+        return kunden;
+    }
 
     public void setKunden(Kunden kunden) {
         this.kunden = kunden;
     }
 
-    public Integer getZimmer() {
+    public Integer getZimmerNr() {
         return zimmer.getZimmerNr();
+    }
+
+    public Zimmer getZimmer() {
+        return zimmer;
     }
 
     public void setZimmer(Zimmer zimmer) {
         this.zimmer = zimmer;
     }
 
-    public Date getVon() {
+    public LocalDate getVon() {
         return von;
     }
 
-    public void setVon(Date von) {
+    public void setVon(LocalDate von) {
         this.von = von;
     }
 
-    public Date getBis() {
+    public LocalDate getBis() {
         return bis;
     }
 
-    public void setBis(Date bis) {
+    public void setBis(LocalDate bis) {
         this.bis = bis;
     }
 
-//    @Override
-//    public String toString() {
-//        final StringBuilder sb = new StringBuilder("Buchung{");
-//        sb.append("id=").append(id);
-//        sb.append(", kunden=").append(kunden);
-//        sb.append(", zimmer=").append(zimmer);
-//        sb.append(", von=").append(von);
-//        sb.append(", bis=").append(bis);
-//        sb.append('}');
-//        return sb.toString();
-//    }
-
-
-//    @Override
-//    public String toString() {
-//        final StringBuilder sb = new StringBuilder("Buchung{");
-//        sb.append("id=").append(id);
-//        sb.append(", kunden=").append(getKundenNr());
-//        sb.append(", zimmer=").append(zimmer);
-//        sb.append(", von=").append(von);
-//        sb.append(", bis=").append(bis);
-//        sb.append('}');
-//        return sb.toString();
-//    }
 }
 

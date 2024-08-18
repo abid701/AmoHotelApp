@@ -1,5 +1,61 @@
-/* Nur für testen */
+.calendar-container {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 6%;
+}
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.calendar div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.header {
+    font-weight: bold;
+    background-color: #D3D3D3;
+}
 
-h2{
-    color: red;
+/* Nur für testen */
+.day {
+    cursor: pointer;
+    /* background-color: orange; */
+}
+/* Diese background-colors sind nur ein Beispiel, um zu verstehen, wie es funktioniert. */
+.emptyCells {
+    /* background-color: blue; */
+}
+
+.zimmerPics {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: auto;
+    }
+
+.zimmerPics img {
+    width: 32%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.zimmerDetails {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+#doppelZimmer {
+    display: none;
+}
+
+#suite {
+    display: none;
+}
+
+#einzelZimmer {
+    display: none;
 }
