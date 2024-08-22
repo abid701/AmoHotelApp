@@ -16,6 +16,13 @@
         <div class="bar2"></div>
         <div class="bar3"></div>
     </div>
+    <div id="menu" class="menu">
+        <a href="/profile">Profiles</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/kunden">Kunden</a>
+        <a href="/buchungen">Buchungen</a>
+        <a href="/logout">Log out</a>
+    </div>
 </header>
 
 <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" id="logo">
@@ -35,19 +42,21 @@
 <div th:fragment="zimmer">
 
     <div class="zimmer-container">
-        <div th:each="zimmer, imageName : ${zimmerList}" class="zimmer">
-
-            <img th:src="@{/images/homePagePics/{index}.jpg(index=${imageName.index + 1})}" alt="Zimmer Logo"
+        <div th:each="zimmer, imageName : ${zimmerList}" class="zimmer" th:data-zimmerList="${zimmerList}">
+            <img th:id="'photo-' + ${zimmer.zimmerNr}" src="" alt="Zimmer Foto" th:data-zimmerNr="${zimmer.zimmerNr}"
                  width="150px" height="150px"></br>
 
             <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span></br><hr>
-            <i class="fa-solid fa-bed"></i> <p th:text="${zimmer.ausstattung}">Ausstattung</p>
-            <i class="fa fa-wifi"></i>   <i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> <p th:text="${zimmer.details}">Details</p>
-            <i class="fa fa-tag"></i> <p th:text="${zimmer.preisProNacht}">Preis pro Nacht</p>
-            <p></p>
+            <i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<p th:text="${zimmer.ausstattung}">Ausstattung</p>
+            <i class="fa fa-wifi"></i><i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> &nbsp;&nbsp;<p
+                th:text="${zimmer.details}">Details</p>
+            <p th:text="${zimmer.preisProNacht} + ' €'">Preis pro Nacht</p>
+
+            <p th:text="${availabilityMap[zimmer.zimmerNr]}">Availability Status</p>
+
 
             <div>
-                <button th:href="@{/zimmerBuchen}">Jetzt buchen</button>
+                 <a th:href="@{/zimmerBuchen(zimmer=${zimmer.zimmerNr})}"><button>Jetzt buchen</button></a>
                 <a th:href="@{/zimmerDetails(zimmer=${zimmer.zimmerNr})}"><button>Mehr</button></a>
             </div>
         </div>
