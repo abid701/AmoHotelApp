@@ -25,7 +25,16 @@ public class Buchung implements Serializable {
 
     private LocalDate bis;
 
+    private Integer total;
+
     public Buchung() {
+    }
+
+    public Buchung(Kunden kunden, Zimmer zimmer, LocalDate von, LocalDate bis) {
+        this.kunden = kunden;
+        this.zimmer = zimmer;
+        this.von = von;
+        this.bis = bis;
     }
 
     public Integer getId() {
@@ -44,6 +53,14 @@ public class Buchung implements Serializable {
         return kunden;
     }
 
+    public String getKundenVorname(){
+        return kunden.getVorname();
+    }
+
+    public String getKundenNachname(){
+        return kunden.getNachname();
+    }
+
     public void setKunden(Kunden kunden) {
         this.kunden = kunden;
     }
@@ -54,6 +71,14 @@ public class Buchung implements Serializable {
 
     public Zimmer getZimmer() {
         return zimmer;
+    }
+
+    public int getTotal(){
+        return total;
+    }
+
+    public void setTotal(int total){
+        this.total = total;
     }
 
     public void setZimmer(Zimmer zimmer) {
