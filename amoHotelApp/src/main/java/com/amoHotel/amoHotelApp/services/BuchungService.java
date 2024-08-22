@@ -27,4 +27,7 @@ public class BuchungService {
         return buchungRepository.findAllByZimmer(zimmer);
     }
 
+    public Buchung saveBuchung(Buchung buchung){
+        return buchungRepository.save(buchung);
+    }
 }
