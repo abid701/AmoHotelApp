@@ -21,7 +21,7 @@ public class Zimmer implements Serializable {
     @Column(name = "details")
     private String details;
 
-    private String preisProNacht;
+    private Integer preisProNacht;
 
 
     @OneToMany(mappedBy = "zimmer", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -29,6 +29,7 @@ public class Zimmer implements Serializable {
 
 
     public Zimmer() {}
+
 
     public Set<Buchung> getBuchungen() {
         return buchungen;
@@ -75,12 +76,24 @@ public class Zimmer implements Serializable {
         this.details = details;
     }
 
-    public String getPreisProNacht() {
+    public Integer getPreisProNacht() {
         return preisProNacht;
     }
 
-    public void setPreisProNacht(String preisProNacht) {
+    public void setPreisProNacht(Integer preisProNacht) {
         this.preisProNacht = preisProNacht;
     }
 
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Zimmer{");
+        sb.append("zimmerNr=").append(zimmerNr);
+        sb.append(", ausstattung='").append(ausstattung).append('\'');
+        sb.append(", details='").append(details).append('\'');
+        sb.append(", preisProNacht='").append(preisProNacht).append('\'');
+        sb.append(", buchungen=").append(buchungen);
+        sb.append('}');
+        return sb.toString();
+    }
 }
