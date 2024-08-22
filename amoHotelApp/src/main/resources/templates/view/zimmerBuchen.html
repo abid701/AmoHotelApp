@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <meta charset="UTF-8">
     <title>Zimmer Buchen</title>
+    <link th:href="@{/styles/zimmerBuchen.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/javascript/zimmerBuchen.js}"></script>
 </head>
 <body>
 
+<h2>Zimmer Buchen</h2>
+
+<!-- Aktueller Buchungen zeigen -->
+<div th:each="buchung : ${buchungList}"
+     th:data-von="${buchung.von}"
+     th:data-bis="${buchung.bis}"
+     class="buchung">
+    <p>Buchung vom <span th:text="${buchung.von}">Von</span> bis <span th:text="${buchung.bis}">Bis</span></p>
+</div>
+
+
+
+<h3>Buchung und Kundeninformationen</h3>
+<form method="POST" th:action="@{/zimmerBuchenUndKunden}">
+    <label for="kundenNr">Kunden Nummer:</label>
+    <input type="number" id="kundenNr" name="kundenNr" placeholder="Kunden Nummer" oninput="toggleKundeFields()" />
+
+    <div id="kundeInfo">
+        <label for="vorname">Vorname:</label>
+        <input type="text" id="vorname" name="vorname" placeholder="Vorname" required>
+
+        <label for="nachname">Nachname:</label>
+        <input type="text" id="nachname" name="nachname" placeholder="Nachname" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+
+        <label for="adresse">Adresse:</label>
+        <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
+    </div>
+
+    <input type="hidden" name="zimmerNr" th:value="${zimmer.zimmerNr}">
+
+    <label for="von">Von:</label>
+    <input type="date" id="von" name="von" required>
+
+    <label for="bis">Bis:</label>
+    <input type="date" id="bis" name="bis" required>
+
+    <label for="numberOfPeople">Anzahl der Personen</label>
+    <input type="number" id="numberOfPeople" name="numberOfPeople" required>
+
+    <label for="breakFast">Frühstück</label>
+    <select name="breakFast" id="breakFast">
+        <option value="Ja">Ja</option>
+        <option value="Nein">Nein</option>
+    </select>
+
+    <input type="submit" value="Buchen">
+</form>
+<!-- Let this be commented out for now, otherwise it wouldnt work properly  -->
+<!-- <p th:text="'Total: ' + ${total}"></p> -->
+<p th:text="${error}">Error</p>
 </body>
 </html>
