@@ -152,6 +152,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let myImage = document.getElementById("photo1-" + zimmerNr);
     let myImage2 = document.getElementById("photo2-" + zimmerNr);
     let myImage3 = document.getElementById("photo3-" + zimmerNr);
+    let ausstattung = document.querySelector('img[data-ausstattung]').getAttribute('data-ausstattung');
+
+    console.log("Hier");
+    console.log(ausstattung);
 
     // Es gibt die src für drei Bilder in jedem Zimmer an.
     myImage.setAttribute("src", "/images/zimmer/" + zimmerNr + "/" + zimmerNr + ".jpg");
@@ -166,11 +170,12 @@ let doppelZimmer = document.getElementById("doppelZimmer");
 let suite = document.getElementById("suite");
 
 document.addEventListener("DOMContentLoaded", function () {
+    let ausstattung = document.querySelector('img[data-ausstattung]').getAttribute('data-ausstattung');
     // Es zeigt den richtigen Detailtext für jeden Zimmertyp an
-    if(myNum === 3 || myNum === 8 || myNum === 11 || myNum === 12 || myNum === 13 || myNum === 20){
+    if(ausstattung === 'Einzel Zimmer'){
         einzelZimmer.style.display = 'block';
     }
-    else if(myNum === 1 || myNum === 4 || myNum === 5 || myNum === 10 || myNum === 14 || myNum === 17 || myNum === 18){
+    else if(ausstattung === 'Doppel Zimmer'){
         doppelZimmer.style.display = 'block';
     }
     else{
