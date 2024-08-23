@@ -14,12 +14,53 @@
      th:data-von="${buchung.von}"
      th:data-bis="${buchung.bis}"
      class="buchung">
-    <p>Buchung vom <span th:text="${buchung.von}">Von</span> bis <span th:text="${buchung.bis}">Bis</span></p>
 </div>
 
 
+<div class="calendar-container">
+    <div id="calendar" class="calendar">
+        <div class="header">So</div>
+        <div class="header">Mo</div>
+        <div class="header">Di</div>
+        <div class="header">Mi</div>
+        <div class="header">Do</div>
+        <div class="header">Fr</div>
+        <div class="header">Sa</div>
+    </div>
 
-<h3>Buchung und Kundeninformationen</h3>
+    <div id="calendar2" class="calendar">
+        <div class="header">So</div>
+        <div class="header">Mo</div>
+        <div class="header">Di</div>
+        <div class="header">Mi</div>
+        <div class="header">Do</div>
+        <div class="header">Fr</div>
+        <div class="header">Sa</div>
+    </div>
+
+    <div id="calendar3" class="calendar">
+        <div class="header">So</div>
+        <div class="header">Mo</div>
+        <div class="header">Di</div>
+        <div class="header">Mi</div>
+        <div class="header">Do</div>
+        <div class="header">Fr</div>
+        <div class="header">Sa</div>
+    </div>
+
+    <div id="calendar4" class="calendar">
+        <div class="header">So</div>
+        <div class="header">Mo</div>
+        <div class="header">Di</div>
+        <div class="header">Mi</div>
+        <div class="header">Do</div>
+        <div class="header">Fr</div>
+        <div class="header">Sa</div>
+    </div>
+
+</div>
+
+    <h3>Buchung und Kundeninformationen</h3>
 <form method="POST" th:action="@{/zimmerBuchenUndKunden}">
     <label for="kundenNr">Kunden Nummer:</label>
     <input type="number" id="kundenNr" name="kundenNr" placeholder="Kunden Nummer" oninput="toggleKundeFields()" />
@@ -57,8 +98,11 @@
 
     <input type="submit" value="Buchen">
 </form>
-<!-- Let this be commented out for now, otherwise it wouldnt work properly  -->
-<!-- <p th:text="'Total: ' + ${total}"></p> -->
+
+<p>10% Rabatt bei Buchung von mindestens 3 Tagen hintereinander</p>
 <p th:text="${error}">Error</p>
+<!-- Test  -->
+<p th:text="'Total: ' + ${total}"></p>
+
 </body>
 </html>
