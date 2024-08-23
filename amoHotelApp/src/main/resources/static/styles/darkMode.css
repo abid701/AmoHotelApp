@@ -1,0 +1,36 @@
+body.dark-mode {
+    background: linear-gradient(135deg, #1c1c1c, #333333);
+    color: #f0f0f0;
+}
+
+body.dark-mode .zimmer {
+    background-color: black;
+ /*   color: white; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode button {
+    background-color: #1abc9c;
+}
+
+body.dark-mode button:hover {
+    background-color: #138b74;
+}
+
+body.dark-mode .table_body {
+    background-color: #2e2e2e;
+}
+
+body.dark-mode thead th {
+    background-color: black;
+    border: 2px solid white;
+}
+
+body.dark-mode tbody tr:nth-child(even) {
+    background-color: black;
+}
+
+
+body.dark-mode .zimmer p {
+    color: white;
+}

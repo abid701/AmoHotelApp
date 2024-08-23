@@ -1,0 +1,29 @@
+.calendar-container {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 6%;
+}
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.calendar div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+.header {
+    font-weight: bold;
+    background-color: #D3D3D3;
+}
+
+
+.day {
+    cursor: pointer;
+}
+
+.emptyCells {
+    background-color: blue;
+}
