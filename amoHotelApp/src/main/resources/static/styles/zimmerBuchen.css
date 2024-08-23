@@ -1,3 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    font-family: "poppins", sans-serif;
+    background: url(/images/2.png) center/cover;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 670px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color:  rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form .title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #84a98c;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.info .details {
+    width: 40%; /* Adjust width as needed */
+    /* font-weight: bold; */
+    text-align: left;
+    margin-right: 10px;
+    color: white;
+}
+
+.info input,
+.info select {
+    width: 55%; /* Adjust width as needed */
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #1a1a1a;
+}
+.info input:hover{
+    border: 1px solid blue;
+    box-shadow: 2px 2px 10px rgb(200, 192, 192);
+}
+.info input[type="submit"] {
+    width: 25%;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border: none;
+    margin: 20px auto 20px auto;
+}
+
+.info input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+#error {
+    color: red;
+    display: none; /* Initially hidden */
+}
+
 .calendar-container {
     gap: 20px;
     display: grid;
@@ -7,23 +82,27 @@
 .calendar {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
+    gap: 4px;
+    background-color: rgb(0 13 10 / 38%);
+    box-shadow: 5px 5px 15px black;
 }
 .calendar div {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: center;
-}
-.header {
-    font-weight: bold;
-    background-color: #D3D3D3;
-}
+    border-radius: 5px;
 
-
+}
 .day {
     cursor: pointer;
+    border-radius: 5px;
+    background-color: #52796f;
 }
-
 .emptyCells {
-    background-color: blue;
+    border-radius: 5px;
+}
+.header{
+    background-color: #cad2c5;
+    border-radius: 5px;
+
 }
