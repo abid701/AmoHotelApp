@@ -3,7 +3,6 @@ body {
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
- /*   background-image: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); */
     background: url(/images/cool-background.png) center/cover;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,8 +23,7 @@ header{
 
 }
 main.table{
-    width: 60vw;
-    height: 99vh;
+    width: 94vw;
     background-color: #fff5;
     backdrop-filter: blur(7px);
     box-shadow: 0 .4rem .8rem #0005;
@@ -43,7 +41,7 @@ table, th, td{
 }
 .table_body{
     width: 95%;
-    max-height: calc(89%- -8rem);
+  /*  max-height: calc(89%- -8rem); */
     background-color: #fffb;
     margin: .8rem auto;
     border-radius: .6rem;
@@ -81,5 +79,27 @@ button{
 button:hover {
       background-color: #45a049;
       box-shadow:2px 2px 5px black;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #888;
+    font-size: 14px;
+}
+
+#back {
+    position: relative;
+    margin-top: 88px;
+    margin-left: 2%;
+    padding: 10px;
+    z-index: 999;
+}
+
+#back a {
+    text-decoration: none;
+    color: white;
 }
 
