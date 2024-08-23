@@ -17,7 +17,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 
 @Controller
@@ -28,7 +27,7 @@ public class ZimmerController {
     @Autowired
     public ZimmerController(ZimmerService zimmerService){
         this.zimmerService = zimmerService;}
-    
+
     @GetMapping("/homePage")
     public String showZimmerList(@RequestParam(value = "zimmerNr", required = false) Integer zimmerNr,
                                  @RequestParam(value = "zimmerType", required = false) String zimmerType,
@@ -55,7 +54,7 @@ public class ZimmerController {
                 zimmerList = zimmerService.getAllZimmerByType(zimmerType);
             }
         }
-        
+
 
         for (Zimmer zimmer : zimmerList) {
             List<Buchung> buchungen = zimmerService.getBuchungListByZimmer(zimmer);
