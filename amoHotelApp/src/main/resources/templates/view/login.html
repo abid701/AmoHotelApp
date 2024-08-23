@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Zimmer Buchen</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link th:href="@{/styles/login.css}" rel="stylesheet" />
+</head>
+<body>
+        <form action="#">
+            <h3>Login Here</h3>
+
+                <label  for="username">Benutzername</label>
+                <input type="text" name="username" placeholder="Benutzername " id="username" />
+
+                <label  for="password">Password</label>
+                <input type="text" name="password" placeholder="Password " id="password" />
+            <button>Log In</button>
+            <div class="social">
+                <div class="go"><i class="fab fa-google"></i>Google</div>
+                <div class="fb"><i class="fab fa-facebook"></i>Facebook</div>
+
+            </div>
+        </form>
+</body>
+</html>
