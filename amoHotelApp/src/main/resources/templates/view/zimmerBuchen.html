@@ -7,8 +7,6 @@
 </head>
 <body>
 
-<h2>Zimmer Buchen</h2>
-
 <!-- Aktueller Buchungen zeigen -->
 <div th:each="buchung : ${buchungList}"
      th:data-von="${buchung.von}"
@@ -59,7 +57,7 @@
     </div>
 
 </div>
-
+<!--
     <h3>Buchung und Kundeninformationen</h3>
 <form method="POST" th:action="@{/zimmerBuchenUndKunden}">
     <label for="kundenNr">Kunden Nummer:</label>
@@ -98,10 +96,67 @@
 
     <input type="submit" value="Buchen">
 </form>
+-->
+<div class="container">
+    <form method="POST" th:action="@{/zimmerBuchenUndKunden}">
+        <div class="form1">
+            <div class="title">Buchung und Kundeninformationen</div>
+                    <div class="info">
+                        <label class="details" for="kundenNr">Kunden Nummer:</label>
+                        <input type="number" id="kundenNr" name="kundenNr" placeholder="Kunden Nummer" oninput="toggleKundeFields()" />
+                    </div>
+            <div id="kundeInfo">
+                <div class="info">
+                    <label class="details" for="vorname">Vorname:</label>
+                    <input type="text" id="vorname" name="vorname" placeholder="Vorname" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="nachname">Nachname:</label>
+                    <input type="text" id="nachname" name="nachname" placeholder="Nachname" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="adresse">Adresse:</label>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
+                </div>
+            </div>
+                <div class="info">
+                    <input type="hidden" name="zimmerNr" value="">
+                </div>
+                <div class="info">
+                    <label class="details" for="von">Von:</label>
+                    <input type="date" id="von" name="von" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="bis">Bis:</label>
+                    <input type="date" id="bis" name="bis" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="numberOfPeople">Anzahl der Personen:</label>
+                    <input type="number" id="numberOfPeople" name="numberOfPeople" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="breakFast">Frühstück:</label>
+                    <select name="breakFast" id="breakFast">
+                        <option value="Ja">Ja</option>
+                        <option value="Nein">Nein</option>
+                    </select>
+                </div>
 
-<p>10% Rabatt bei Buchung von mindestens 3 Tagen hintereinander</p>
-<p th:text="${error}">Error</p>
+                <div class="info">
+                    <input type="submit" value="Buchen">
+                </div>
+            </div>
+    </form>
+    <p>10% Rabatt bei Buchung von mindestens 3 Tagen hintereinander</p>
+    <p th:text="${error}">Error</p>
+</div>
+
 <!-- Test  -->
+<p th:text="${error}">Error</p>
 <p th:text="'Total: ' + ${total}"></p>
 
 </body>
