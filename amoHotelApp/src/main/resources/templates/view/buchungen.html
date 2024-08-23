@@ -4,33 +4,46 @@
     <meta charset="UTF-8">
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
     <link th:href="@{/styles/buchungen.css}" rel="stylesheet" />
+    <link th:href="@{/styles/darkMode.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/javascript/darkMode.js}"></script>
     <title>Buchungen</title>
 </head>
 <body>
 <header>
     Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
 </header>
+<button id="back">
+<a th:href="@{/homePage}" class="back-link">Zurück</a>
+</button>
 <main class="table" >
     <section class="table_header"></section>
     <section class="table_body">
         <table>
             <thead>
             <tr>
-                <th>Kunden</th>
+                <th>Buchung</th>
+                <th>KundenNr</th>
+                <th>Kunden Vorname</th>
+                <th>Kunden Nachname</th>
                 <th>Zimmer Nummer</th>
                 <th>Von</th>
                 <th>Bis</th>
+                <th>Total</th>
                 <th>Stornierung</th>
             </tr>
             </thead>
             <tbody>
             <tr>
             <tr th:each="buchung : ${buchungen}">
+                <td style="text-align: center" th:text="${buchung.id}"></td>
                 <td style="text-align: center" th:text="${buchung.kundenNr}"></td>
+                <td style="text-align: center" th:text="${buchung.kundenVorname}"></td>
+                <td style="text-align: center" th:text="${buchung.kundenNachname}"></td>
                 <td style="text-align: center" th:text="${buchung.zimmerNr}"></td>
                 <td style="text-align: center" th:text="${buchung.von}"></td>
                 <td style="text-align: center"th:text="${buchung.bis}"></td>
-                <td><button th:href="@{/}">Stornierung</button></td>
+                <td style="text-align: center" th:text="${buchung.total} + ' €'"></td>
+                <td style="text-align: center"><button th:href="@{/}">Stornierung</button></td>
             </tr>
             </tbody>
         </table>
