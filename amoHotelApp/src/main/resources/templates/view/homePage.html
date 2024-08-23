@@ -4,8 +4,10 @@
     <title>Amo Hotel Rezeption</title>
     <link rel="icon" href="/images/favicon.png" type="image/x-icon">
     <link th:href="@{/styles/homePage.css}" rel="stylesheet" />
+    <link th:href="@{/styles/darkMode.css}" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <script type="text/javascript" th:src="@{/javascript/homePage.js}"></script>
+    <script type="text/javascript" th:src="@{/javascript/darkMode.js}"></script>
 </head>
 <body>
 
@@ -23,6 +25,8 @@
         <a href="/buchungen">Buchungen</a>
         <a href="/logout">Log out</a>
     </div>
+
+    <button id="darkModeToggle">Dark Mode</button>
 </header>
 
 <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" id="logo">
