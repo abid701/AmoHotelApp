@@ -3,146 +3,146 @@
 <head>
     <title>Zimmer Details</title>
     <link th:href="@{/styles/zimmerDetails.css}" rel="stylesheet" />
-
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
 </head>
 <body>
 <header>
     Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
-    <a th:href="@{/homePage}" class="back-link">Zurück zum Home Page</a>
-    <span>Details für Zimmer Nummer </span><span id="zimmerNr" th:text="${zimmer.zimmerNr}"></span> <br>
 </header>
-
+<div class="back-button">
+    <button><a th:href="@{/homePage}" class="back-link">Zurück</a></button>
+</div>
 <!-- Die src von den Bilder stammt aus dem Javascript -->
 <div class="zimmerPics">
     <img th:id="'photo1-' + ${zimmer.zimmerNr}" src="" alt="Zimmer Foto" th:data-zimmerNr="${zimmer.zimmerNr}" width="20%" height="20%">
 
     <img th:id="'photo2-' + ${zimmer.zimmerNr}" src="" alt="Zimmer Foto" th:data-zimmerNr="${zimmer.zimmerNr}" width="20%" height="20%">
 
-    <img th:id="'photo3-' + ${zimmer.zimmerNr}" src="" alt="Zimmer Foto" th:data-zimmerNr="${zimmer.zimmerNr}" width="20%" height="20%">
+    <img th:id="'photo3-' + ${zimmer.zimmerNr}" src="" alt="Zimmer Foto" th:data-zimmerNr="${zimmer.zimmerNr}" th:data-ausstattung="${zimmer.ausstattung}" width="20%" height="20%">
 </div>
 
-<h5>Alle Zimmer Details</h5>
-
-<p th:text="${zimmer.ZimmerNr}"></p>
-<p th:text="${zimmer.ausstattung}"></p>
-<p th:text="${zimmer.details}"></p>
-<p th:text="${zimmer.preisProNacht}"></p>
+<div class="text-block">
+    <div id="style-tabel">
+        <table class="center">
+            <tr>
+                <td><span>Zimmer Nr &emsp;</span><i class="fa-solid fa-door-open"></i></td>
+                <td><span>Nummar </span><span th:text="${zimmer.zimmerNr}"></span></td>
+            </tr>
+            <tr>
+                <td><span>Ausstattung&emsp;<i class="fa-solid fa-bed"></i></span></td>
+                <td><p th:text="${zimmer.ausstattung}" id="zimmer-ausstattung"></p></td>
+            </tr>
+            <tr>
+                <td><span>Details &emsp; <i class="fa fa-wifi"></i><i class="fa fa-bath"></i><i
+                        class="fa fa-tv"></i></span></td>
+                <td><p th:text="${zimmer.details}"></p></td>
+            </tr>
+            <tr>
+                <td><span>Preis pro Nacht  &emsp; <i class="fa fa-tag"></i> </span></td>
+                <td><p th:text="${zimmer.preisProNacht}"></p></td>
+            </tr>
+        </table>
+    </div>
+</div>
 
 <!-- Details für Einzel Zimmer -->
 <div id="doppelZimmer" class="zimmerDetails">
     <h3 th:text="'Zimmer ' + ${zimmer.zimmerNr}"></h3>
-    <p>Es ist Doppel Zimmer, hier sind alle details über doppelZimmer. Provident mollitia sit temporibus aliquid <br>
-        dolorum in ratione similique accusamus voluptatum ad sint eius sunt commodi nam odio eos quibusdam, esse <br>
-        dolorum in ratione similique accusamus voluptatum ad sint eius sunt commodi nam odio eos quibusdam, esse <br>
-        ipsam quod optio porro. Tempore expedita dolorum placeat sit fuga dolore ipsa est et officiis illo aperiam <br>
-        necessitatibus, consectetur odit reprehenderit quis ea vero voluptates, reindis nobis sapiente nulla! Quo<br>
-        dolorum nostrum doloribus! Facilis obcaecati esse laudantium officiis, molestiae ipsum ea est quasi quos<br>
-        similique ullam a doloremque ipsa suscipit mollitia aliquid ex error rem autem eveniet reiciendis nisi<br>
-        adipisci atque! Eius, quibusdam laboriosam quis modi dignissimos cum esse sunt iste dolorum atque quas<br>
-        expedita adipisci ipsum id totam neque deleniti, corporis eum, nemo illo? Ab labore itaque eos. Provident<br>
-        modi quo quasi nemo similique maxime blanditiis culpa est quia dignissimos asperiores ab iste quis<br>
-        consectetur unde maiores, magnam ipsum et dolores qui? Alias facere tione ipsum possimus neque aperiam quo<br>
-        repellendus vero voluptatibus perferendis cumque, a, earum odit dolor? Quo harum officia explicabo est<br>
-        ullam. Similique aliquid labore nisi? Facere veritatis voluptatibus neque odit at vero fuga cum dolorum<br>
-        maxime sapiente quibusdam quae labore quidem qui aliquid tenetur molestiae, aspernatur impedit aliquam.<br>
-        Culpa at eum tempore accusamus asperiores animi?</p>
-
+    <p>Das Doppelzimmer bietet idealen Komfort für zwei Personen.
+        Es ist geräumig und stilvoll eingerichtet, mit zwei bequemen Betten oder einem großen Doppelbett,
+        je nach Wunsch. Zur Ausstattung gehören außerdem ein Schreibtisch, ein Kleiderschrank,
+        ein Fernseher und ein eigenes Bad. Viele Doppelzimmer bieten zudem einen schönen Ausblick,
+        entweder auf die Stadt oder auf die umliegende Natur. Es ist perfekt für Paare,
+        Freunde oder Familienmitglieder, die gemeinsam reisen und eine entspannte Atmosphäre genießen
+        möchten.</p>
 </div>
 <!-- Details für Suite -->
 <div id="suite" class="zimmerDetails">
     <h3 th:text="'Zimmer ' + ${zimmer.zimmerNr}"></h3>
-    <p>Es ist ein Suite und hier sind alle details über Suite. Provident mollitia adipisci sit temporibus aliquid <br>
-        dolorum in ratione similique accusamus voluptatum ad sint eius sunt commodi nam odio eos quibusdam, esse <br>
-        dolorum in ratione similique accusamus voluptatum ad sint eius sunt commodi nam odio eos quibusdam, esse <br>
-        ipsam quod optio porro. Tempore expedita dolorum placeat sit fuga dolore ipsa est et officiis illo aperiam <br>
-        necessitatibus, consectetur odit reprehenderit quis ea vero voluptates, reindis nobis sapiente nulla! Quo<br>
-        dolorum nostrum doloribus! Facilis obcaecati esse laudantium officiis, molestiae ipsum ea est quasi quos<br>
-        similique ullam a doloremque ipsa suscipit mollitia aliquid ex error rem autem eveniet reiciendis nisi<br>
-        adipisci atque! Eius, quibusdam laboriosam quis modi dignissimos cum esse sunt iste dolorum atque quas<br>
-        expedita adipisci ipsum id totam neque deleniti, corporis eum, nemo illo? Ab labore itaque eos. Provident<br>
-        modi quo quasi nemo similique maxime blanditiis culpa est quia dignissimos asperiores ab iste quis<br>
-        consectetur unde maiores, magnam ipsum et dolores qui? Alias facere tione ipsum possimus neque aperiam quo<br>
-        repellendus vero voluptatibus perferendis cumque, a, earum odit dolor? Quo harum officia explicabo est<br>
-        ullam. Similique aliquid labore nisi? Facere veritatis voluptatibus neque odit at vero fuga cum dolorum<br>
-        maxime sapiente quibusdam quae labore quidem qui aliquid tenetur molestiae, aspernatur impedit aliquam.<br>
-        Culpa at eum tempore accusamus asperiores animi?</p>
-
+    <p>Eine Suite bietet luxuriösen Komfort und viel Platz für einen unvergesslichen Aufenthalt.
+        Sie besteht in der Regel aus einem separaten Schlafzimmer, einem großzügigen Wohnbereich und
+        einem luxuriösen Badezimmer. Die elegante Einrichtung und die hochwertigen Möbel schaffen eine
+        exklusive Atmosphäre. Einige Suiten verfügen zudem über besondere Annehmlichkeiten wie einen Balkon,
+        eine eigene Küche oder einen Whirlpool. Die Suite ist ideal für Gäste, die besonderen Wert auf
+        Privatsphäre, Komfort und zusätzlichen Raum legen.</p>
 </div>
 
 <!-- Details für Doppel Zimmer -->
 <div id="einzelZimmer" class="zimmerDetails">
     <h3 th:text="'Zimmer ' + ${zimmer.zimmerNr}"></h3>
-    <p>Es ist ein Einzel Zimmer und hier sind alle details über Einzel Zimmer. Provident mollitia adipisci aliquid <br>
-        dolorum in ratione similique accusamus voluptatum ad sint eius sunt commodi nam odio eos quibusdam, esse <br>
-        dolorum in ratione similique accusamus voluptatum ad sint eius sunt commodi nam odio eos quibusdam, esse <br>
-        ipsam quod optio porro. Tempore expedita dolorum placeat sit fuga dolore ipsa est et officiis illo aperiam <br>
-        necessitatibus, consectetur odit reprehenderit quis ea vero voluptates, reindis nobis sapiente nulla! Quo<br>
-        dolorum nostrum doloribus! Facilis obcaecati esse laudantium officiis, molestiae ipsum ea est quasi quos<br>
-        similique ullam a doloremque ipsa suscipit mollitia aliquid ex error rem autem eveniet reiciendis nisi<br>
-        adipisci atque! Eius, quibusdam laboriosam quis modi dignissimos cum esse sunt iste dolorum atque quas<br>
-        expedita adipisci ipsum id totam neque deleniti, corporis eum, nemo illo? Ab labore itaque eos. Provident<br>
-        modi quo quasi nemo similique maxime blanditiis culpa est quia dignissimos asperiores ab iste quis<br>
-        consectetur unde maiores, magnam ipsum et dolores qui? Alias facere tione ipsum possimus neque aperiam quo<br>
-        repellendus vero voluptatibus perferendis cumque, a, earum odit dolor? Quo harum officia explicabo est<br>
-        ullam. Similique aliquid labore nisi? Facere veritatis voluptatibus neque odit at vero fuga cum dolorum<br>
-        maxime sapiente quibusdam quae labore quidem qui aliquid tenetur molestiae, aspernatur impedit aliquam.<br>
-        Culpa at eum tempore accusamus asperiores animi?</p>
+    <p>Das Einzelzimmer ist ideal für Alleinreisende, die Ruhe und Privatsphäre suchen.
+        Es ist gemütlich eingerichtet und verfügt über ein bequemes Bett, einen Schreibtisch,
+        einen Kleiderschrank und ein eigenes Bad. Ein großer Vorteil des Einzelzimmers ist die Ruhe,
+        da es oft abseits der Hauptverkehrswege des Hotels liegt.
+        Kostenloses WLAN und ein Flachbildfernseher gehören ebenfalls zur Ausstattung.
+        Es bietet den perfekten Rückzugsort nach einem langen Tag.</p>
 
 </div>
-
 
 <!-- Diese Codezeilen helfen beim Zugriff auf von in bis in Javascript -->
 <div th:each="buchung : ${buchungList}"
      th:data-von="${buchung.von}"
      th:data-bis="${buchung.bis}"
      class="buchung">
-    <!-- Diese zwei zeilen sind zum Testen und können gelöscht werden. -->
-    <p th:text="${buchung.von}"></p>
-    <p th:text="${buchung.bis}"></p>
 </div>
 
 <!-- Dies sind die Wochentage für die Tage in jedem Monat, die Tage würden durch Javascript generiert -->
 <div class="calendar-container">
-    <div id="calendar" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+
+    <div class="calendar-wrapper">
+        <h1 th:text="${currentMonth}"></h1>
+        <div id="calendar" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
-    <div id="calendar2" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+
+    <div class="calendar-wrapper">
+        <h1 th:text="${nextMonth}"></h1>
+        <div id="calendar2" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
-    <div id="calendar3" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+    <div class="calendar-wrapper">
+        <h1 th:text="${thirdMonth}"></h1>
+        <div id="calendar3" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
-    <div id="calendar4" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
-    </div>
 
+    <div class="calendar-wrapper">
+        <h1 th:text="${fourthMonth}"></h1>
+        <div id="calendar4" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
+    </div>
 
 </div>
 <script type="text/javascript" th:src="@{/javascript/zimmerDetails.js}"></script>
