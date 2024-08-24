@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Wenn isBooked ist true, dann muss backroundcolor rot sein.
         if (isBooked) {
-            dayCell.style.backgroundColor = "red";
+            dayCell.style.backgroundColor = "#ff4848";
         }
 
         calendarElement.appendChild(dayCell);
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell2.style.backgroundColor = "red";
+           dayCell2.style.backgroundColor = "#ff4848";
        }
 
        calendarElement2.appendChild(dayCell2);
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell3.style.backgroundColor = "red";
+           dayCell3.style.backgroundColor = "#ff4848";
        }
 
        calendarElement3.appendChild(dayCell3);
@@ -156,9 +156,58 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell4.style.backgroundColor = "red";
+           dayCell4.style.backgroundColor = "#ff4848";
        }
 
        calendarElement4.appendChild(dayCell4);
    }
 });
+
+/* Popup für die Bestätigung */
+
+ function showConfirmation() {
+
+        const kundenNr = document.getElementById('kundenNr').value;
+        const vorname = document.getElementById('vorname').value;
+        const nachname = document.getElementById('nachname').value;
+        const email = document.getElementById('email').value;
+        const adresse = document.getElementById('adresse').value;
+        const von = document.getElementById('von').value;
+        const bis = document.getElementById('bis').value;
+        const numberOfPeople = document.getElementById('numberOfPeople').value;
+        const breakFast = document.getElementById('breakFast').value;
+
+
+        const modalText = `
+            Kunden Nummer: ${kundenNr || 'Nicht angegeben'}<br>
+            Vorname: ${vorname}<br>
+            Nachname: ${nachname}<br>
+            Email: ${email}<br>
+            Adresse: ${adresse}<br>
+            Von: ${von}<br>
+            Bis: ${bis}<br>
+            Anzahl der Personen: ${numberOfPeople}<br>
+            Frühstück: ${breakFast}
+        `;
+        document.getElementById('modalText').innerHTML = modalText;
+
+
+        document.getElementById('confirmationModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('confirmationModal').style.display = 'none';
+    }
+
+    function confirmSubmit() {
+        // Submit die form
+        document.getElementById('buchungForm').submit();
+    }
+
+    // Schließt die Modal, wenn benutzer draußen klickt.
+    window.onclick = function(event) {
+        const modal = document.getElementById('confirmationModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
