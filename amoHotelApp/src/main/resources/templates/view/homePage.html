@@ -51,12 +51,11 @@
                  width="150px" height="150px"></br>
 
             <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span></br><hr>
-            <i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<p th:text="${zimmer.ausstattung}">Ausstattung</p>
-            <i class="fa fa-wifi"></i><i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> &nbsp;&nbsp;<p
-                th:text="${zimmer.details}">Details</p>
-            <p th:text="${zimmer.preisProNacht} + ' €'">Preis pro Nacht</p>
-
-            <p th:text="${availabilityMap[zimmer.zimmerNr]}">Availability Status</p>
+            <i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<span th:text="${zimmer.ausstattung}">Ausstattung</span></br>
+            <i class="fa fa-wifi"></i><i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> &nbsp;&nbsp;</br>
+            <span th:text="${zimmer.details}">Details</span></br>
+            <span th:text="${zimmer.preisProNacht} + ' €'">Preis pro Nacht</span></br>
+            <span th:text="${availabilityMap[zimmer.zimmerNr]}">Availability Status</span>
 
 
             <div>
