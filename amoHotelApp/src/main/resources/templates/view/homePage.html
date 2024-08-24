@@ -19,14 +19,14 @@
         <div class="bar3"></div>
     </div>
     <div id="menu" class="menu">
-        <a href="/profile">Profiles</a>
         <a href="/gallery">Gallery</a>
         <a href="/kunden">Kunden</a>
         <a href="/buchungen">Buchungen</a>
-        <a href="/logout">Log out</a>
+        <button id="darkModeToggle">Dark Mode <i class="fa-solid fa-moon"></i></button>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" id="sub-button"/><i class="fa-solid fa-right-from-bracket"></i>
+        </form>
     </div>
-
-    <button id="darkModeToggle">Dark Mode</button>
 </header>
 
 <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" id="logo">
@@ -51,16 +51,15 @@
                  width="150px" height="150px"></br>
 
             <span>Zimmer </span><span th:text="${zimmer.zimmerNr}">Zimmer Nr.</span></br><hr>
-            <i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<p th:text="${zimmer.ausstattung}">Ausstattung</p>
-            <i class="fa fa-wifi"></i><i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> &nbsp;&nbsp;<p
-                th:text="${zimmer.details}">Details</p>
-            <p th:text="${zimmer.preisProNacht} + ' €'">Preis pro Nacht</p>
-
-            <p th:text="${availabilityMap[zimmer.zimmerNr]}">Availability Status</p>
+            <i class="fa-solid fa-bed"></i>&nbsp;&nbsp;&nbsp;<span th:text="${zimmer.ausstattung}">Ausstattung</span></br>
+            <i class="fa fa-wifi"></i><i class="fa fa-bath"></i>  <i class="fa fa-tv"></i> &nbsp;&nbsp;</br>
+            <span th:text="${zimmer.details}">Details</span></br>
+            <span th:text="${zimmer.preisProNacht} + ' €'">Preis pro Nacht</span></br>
+            <span th:text="${availabilityMap[zimmer.zimmerNr]}">Availability Status</span>
 
 
             <div>
-                 <a th:href="@{/zimmerBuchen(zimmer=${zimmer.zimmerNr})}"><button>Jetzt buchen</button></a>
+                <a th:href="@{/zimmerBuchen(zimmer=${zimmer.zimmerNr})}"><button>Jetzt buchen</button></a>
                 <a th:href="@{/zimmerDetails(zimmer=${zimmer.zimmerNr})}"><button>Mehr</button></a>
             </div>
         </div>
