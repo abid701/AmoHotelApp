@@ -1,49 +1,126 @@
-<!--<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
-<head>
-    <title>Zimmer Buchen</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
-    <link th:href="@{/styles/login.css}" rel="stylesheet" />
-</head>
-<body>
-        <form action="#">
-            <h3>Login Here</h3>
-
-                <label  for="username">Benutzername</label>
-                <input type="text" name="username" placeholder="Benutzername " id="username" />
-
-                <label  for="password">Password</label>
-                <input type="text" name="password" placeholder="Password " id="password" />
-            <button>Log In</button>
-            <div class="social">
-                <div class="go"><i class="fab fa-google"></i>Google</div>
-                <div class="fb"><i class="fab fa-facebook"></i>Facebook</div>
-
-            </div>
-        </form>
-</body>
-</html>
--->
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Zimmer Buchen</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css}" />
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/x-icon">
     <style>
-       
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background: linear-gradient(to right, #2c3e50, #4ca1af);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form{
+            height: 520px;
+            width: 400px;
+            background-color: rgb(52 4 4 / 38%);
+            position: absolute;
+            transform: translate(-50%,-50%);
+            top: 50%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 40px rgba(8,7,16,0.6);
+            padding: 50px 35px;
+        }
+        form *{
+            font-family: 'Poppins',sans-serif;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+        form h3{
+            font-size: 32px;
+            font-weight: 500;
+            line-height: 42px;
+            text-align: center;
+        }
+
+        label{
+            display: block;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        input{
+            display: block;
+            height: 50px;
+            width: 100%;
+            background-color: rgba(255,255,255,0.07);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        ::placeholder{
+            color: #e5e5e5;
+        }
+        button{
+            margin-top: 50px;
+            margin-bottom: 14px;
+            width: 100%;
+            background-color: #ffffff;
+            color: #080710;
+            padding: 15px 0;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .social{
+          margin-top: 30px;
+          display: flex;
+        }
+        .social div{
+          background: red;
+          width: 150px;
+          border-radius: 3px;
+          padding: 5px 10px 10px 5px;
+          background-color: rgba(255,255,255,0.27);
+          color: #eaf0fb;
+          text-align: center;
+        }
+        .social div:hover{
+          background-color: rgba(255,255,255,0.47);
+        }
+        .social .fb{
+          margin-left: 25px;
+        }
+        .social i{
+          margin-right: 4px;
+        }
+
     </style>
 </head>
 <body>
 <form th:action="@{/login}" method="post">
-    <h3>Login Here</h3>
+    <h3>Hier einloggen</h3>
 
-    <label> User Name : <input type="text" name="username" id="username"/> </label>
+    <label> Benutzername <input type="text" name="username" id="username"/> </label>
 
-    <label> Password: <input type="password" name="password" id="password"/> </label>
+    <label> Password <input type="password" name="password" id="password"/> </label>
 
-    <button type="submit" value="Sign In"></button>
+    <button type="submit" value="Sign In">Login</button>
+    <div th:if="${param.error}">
+        Invalid username and password.
+    </div>
+    <div th:if="${param.logout}">
+        You have been logged out.
+    </div>
+
     <div class="social">
         <div class="go"><i class="fab fa-google"></i>Google</div>
         <div class="fb"><i class="fab fa-facebook"></i>Facebook</div>
