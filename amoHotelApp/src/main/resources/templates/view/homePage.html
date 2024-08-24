@@ -19,16 +19,14 @@
         <div class="bar3"></div>
     </div>
     <div id="menu" class="menu">
-        <a href="/profile">Profiles</a>
         <a href="/gallery">Gallery</a>
         <a href="/kunden">Kunden</a>
         <a href="/buchungen">Buchungen</a>
-        <a href="/logout">Log out</a>
-    </div>
-    <form th:action="@{/logout}" method="post">
+        <a id="darkModeToggle">Dark Mode</a>
+        <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
-    </form>
-    <button id="darkModeToggle">Dark Mode</button>
+        </form>
+    </div>
 </header>
 
 <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" id="logo">
