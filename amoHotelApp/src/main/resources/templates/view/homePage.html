@@ -25,7 +25,9 @@
         <a href="/buchungen">Buchungen</a>
         <a href="/logout">Log out</a>
     </div>
-
+    <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+    </form>
     <button id="darkModeToggle">Dark Mode</button>
 </header>
 
