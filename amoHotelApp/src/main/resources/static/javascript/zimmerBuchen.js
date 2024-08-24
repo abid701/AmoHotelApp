@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Wenn isBooked ist true, dann muss backroundcolor rot sein.
         if (isBooked) {
-            dayCell.style.backgroundColor = "red";
+            dayCell.style.backgroundColor = "#ff4848";
         }
 
         calendarElement.appendChild(dayCell);
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell2.style.backgroundColor = "red";
+           dayCell2.style.backgroundColor = "#ff4848";
        }
 
        calendarElement2.appendChild(dayCell2);
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell3.style.backgroundColor = "red";
+           dayCell3.style.backgroundColor = "#ff4848";
        }
 
        calendarElement3.appendChild(dayCell3);
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell4.style.backgroundColor = "red";
+           dayCell4.style.backgroundColor = "#ff4848";
        }
 
        calendarElement4.appendChild(dayCell4);
