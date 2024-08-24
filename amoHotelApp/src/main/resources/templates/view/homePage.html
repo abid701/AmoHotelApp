@@ -22,9 +22,9 @@
         <a href="/gallery">Gallery</a>
         <a href="/kunden">Kunden</a>
         <a href="/buchungen">Buchungen</a>
-        <a id="darkModeToggle">Dark Mode</a>
+        <button id="darkModeToggle">Dark Mode <i class="fa-solid fa-moon"></i></button>
         <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out"/>
+            <input type="submit" value="Sign Out" id="sub-button"/><i class="fa-solid fa-right-from-bracket"></i>
         </form>
     </div>
 </header>
@@ -59,7 +59,7 @@
 
 
             <div>
-                 <a th:href="@{/zimmerBuchen(zimmer=${zimmer.zimmerNr})}"><button>Jetzt buchen</button></a>
+                <a th:href="@{/zimmerBuchen(zimmer=${zimmer.zimmerNr})}"><button>Jetzt buchen</button></a>
                 <a th:href="@{/zimmerDetails(zimmer=${zimmer.zimmerNr})}"><button>Mehr</button></a>
             </div>
         </div>
