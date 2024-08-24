@@ -31,6 +31,6 @@ body.dark-mode tbody tr:nth-child(even) {
 }
 
 
-body.dark-mode .zimmer p {
+body.dark-mode .zimmer span {
     color: white;
 }
