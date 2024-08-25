@@ -13,7 +13,7 @@
     Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
 </header>
 <button id="back">
-<a th:href="@{/homePage}" class="back-link">Zurück</a>
+    <a th:href="@{/homePage}" class="back-link">Zurück</a>
 </button>
 <main class="table" >
     <section class="table_header"></section>
@@ -43,7 +43,10 @@
                 <td style="text-align: center" th:text="${buchung.von}"></td>
                 <td style="text-align: center"th:text="${buchung.bis}"></td>
                 <td style="text-align: center" th:text="${buchung.total} + ' €'"></td>
-                <td style="text-align: center"><button th:href="@{/}">Stornierung</button></td>
+                <td style="text-align: center"><form th:action="@{/buchungen/delete/{id}(id=${buchung.id})}"
+                                                     method="post" onsubmit="return confirm('Möchten Sie diese Buchung wirklich stornieren?');">
+                    <button type="submit">Stornierung</button>
+                </form></td>
             </tr>
             </tbody>
         </table>
