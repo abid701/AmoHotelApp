@@ -4,6 +4,8 @@
     <title>Zimmer Buchen</title>
     <link th:href="@{/styles/zimmerBuchen.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/javascript/zimmerBuchen.js}"></script>
+    <link th:href="@{/styles/darkMode.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/javascript/darkMode.js}"></script>
 </head>
 <body>
 <header>
@@ -106,7 +108,8 @@
                 </div>
             </div>
             <div class="info">
-                <input type="hidden" name="zimmerNr" th:value="${zimmer.zimmerNr}">
+                <input type="hidden" id="zimmerNr" name="zimmerNr" th:value="${zimmer.zimmerNr}">
+                <input type="hidden" id="preisProNacht" name="preisProNacht" th:value="${zimmer.preisProNacht}">
             </div>
             <div class="info">
                 <label class="details" for="von">Von:</label>
@@ -129,7 +132,6 @@
             </div>
 
             <div class="info">
-                <!-- <input type="submit" value="Buchen"> -->
                 <button id="submitButton" type="button" onclick="showConfirmation()">Buchen</button>
             </div>
         </div>
@@ -143,7 +145,7 @@
         <span class="modal-close" onclick="closeModal()">&times;</span>
         <div class="modal-header">Buchung bestätigen</div>
         <div class="modal-body" id="modalText">
-
+            <!-- Modal content will be dynamically inserted here -->
         </div>
         <div class="modal-footer">
             <button type="button" class="cancel" onclick="closeModal()">Abbrechen</button>
@@ -151,7 +153,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>
