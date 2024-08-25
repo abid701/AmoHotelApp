@@ -30,4 +30,9 @@ public class BuchungService {
     public Buchung saveBuchung(Buchung buchung){
         return buchungRepository.save(buchung);
     }
+
+    public void deleteBuchung(Buchung buchung){
+        buchungRepository.delete(buchung);
+    }
+
 }
