@@ -21,7 +21,6 @@ public class KundenService {
         return kundenRespository.findAll();
     }
 
-    // New
     public Kunden getKundenById(Integer kundenNr) {
         return kundenRespository.findById(kundenNr).orElse(null);
     }

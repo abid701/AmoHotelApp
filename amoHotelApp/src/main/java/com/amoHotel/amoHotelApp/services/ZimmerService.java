@@ -43,7 +43,6 @@ public class ZimmerService {
         return buchungService.getBuchungByZimmer(zimmer);
     }
 
-    // New
     public Kunden getKundenById(Integer kundenNr) {
         return kundenService.getKundenById(kundenNr);
     }

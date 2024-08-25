@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Wenn isBooked ist true, dann muss backroundcolor rot sein.
         if (isBooked) {
-            dayCell.style.backgroundColor = "red";
+            dayCell.style.backgroundColor = "#ff4848";
         }
 
         calendarElement.appendChild(dayCell);
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell2.style.backgroundColor = "red";
+           dayCell2.style.backgroundColor = "#ff4848";
        }
 
        calendarElement2.appendChild(dayCell2);
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell3.style.backgroundColor = "red";
+           dayCell3.style.backgroundColor = "#ff4848";
        }
 
        calendarElement3.appendChild(dayCell3);
@@ -156,9 +156,62 @@ document.addEventListener("DOMContentLoaded", function () {
 
        // Wenn isBooked ist true, dann muss backroundcolor rot sein.
        if (isBooked) {
-           dayCell4.style.backgroundColor = "red";
+           dayCell4.style.backgroundColor = "#ff4848";
        }
 
        calendarElement4.appendChild(dayCell4);
    }
 });
+
+
+
+function showConfirmation() {
+        const zimmerNr = document.getElementById('zimmerNr').value;
+        const preisProNacht = parseFloat(document.getElementById('preisProNacht').value);
+        const von = new Date(document.getElementById('von').value);
+        const bis = new Date(document.getElementById('bis').value);
+        const numberOfPeople = parseInt(document.getElementById('numberOfPeople').value);
+        const breakFast = document.getElementById('breakFast').value;
+
+
+        const diffInTime = bis.getTime() - von.getTime();
+        const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
+
+        // Calculate total
+        let total = preisProNacht;
+        if (diffInDays > 0) {
+            total += preisProNacht * diffInDays;
+        }
+        if (numberOfPeople > 1) {
+            total *= numberOfPeople;
+        }
+        if (breakFast === "Ja") {
+            const breakFastPrice = 10 * diffInDays * numberOfPeople;
+            total += breakFastPrice;
+        }
+
+        document.getElementById('modalText').innerHTML = `
+            Zimmer Nummer: ${zimmerNr}<br>
+            Von: ${document.getElementById('von').value}<br>
+            Bis: ${document.getElementById('bis').value}<br>
+            Anzahl der Personen: ${numberOfPeople}<br>
+            Frühstück: ${breakFast}<br>
+            Gesamtbetrag: ${total.toFixed(2)} EUR
+        `;
+        document.getElementById('confirmationModal').style.display = 'block';
+    }
+
+    function closeModal() {
+        document.getElementById('confirmationModal').style.display = 'none';
+    }
+
+    function confirmSubmit() {
+        document.getElementById('buchungForm').submit();
+    }
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('confirmationModal');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }

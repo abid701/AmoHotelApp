@@ -1,20 +1,45 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <title>Meine Kunden Liste</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/images/favicon.png" type="image/x-icon">
+    <link th:href="@{/styles/buchungen.css}" rel="stylesheet" />
+    <link th:href="@{/styles/darkMode.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/javascript/darkMode.js}"></script>
+    <title>Buchungen</title>
 </head>
 <body>
-<div>Web Application. Passed parameter : </br>
-    <span>Hallo</span>
-    <table>
-        <tr th:each="kunden : ${kundenList}">
-            <td th:text="${kunden.kundenNr}">kundenNr</td>
-            <td th:text="${kunden.vorname}">Vorname</td>
-            <td th:text="${kunden.nachname}">Nachname</td>
-            <td th:text="${kunden.email}">Email</td>
-            <td th:text="${kunden.adresse}">adresse</td>
-        </tr>
-    </table>
-</div>
+<header>
+    Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
+</header>
+<main class="table" >
+    <section class="table_header"></section>
+    <section class="table_body">
+        <table>
+            <thead>
+            <tr>
+                <th>KundenNr</th>
+                <th>Vorname</th>
+                <th>Nachname</th>
+                <th>Email</th>
+                <th>Adresse</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            <tr th:each="kunden : ${kundenList}">
+                <td style="text-align: center" th:text="${kunden.kundenNr}"></td>
+                <td style="text-align: center"  th:text="${kunden.vorname}"></td>
+                <td style="text-align: center" th:text="${kunden.nachname}"></td>
+                <td style="text-align: center" th:text="${kunden.email}"></td>
+                <td style="text-align: center" th:text="${kunden.adresse}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+<footer>
+    &copy; 2024 AmoHotel. All rights reserved.
+</footer>
 </body>
 </html>

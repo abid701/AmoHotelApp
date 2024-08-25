@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example</title>
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(2,37,78,1) 0%, rgba(4,56,126,1) 19.7%, rgba(85,245,221,1) 100.2% );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+p {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.6;
+    color: black;
+}
+a {
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    background-color: #1e2125eb;;
+    padding: 12px 25px;
+    border-radius: 30px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    margin-top: 20px;
+}
+a:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    a {
+        padding: 10px 20px;
+    }
+}
+
+</style>
+</head>
+<body>
+<h1>Willkommen!</h1>
+<p>Klicken <a th:href="@{/homePage}">Sie hier, </a> um fortzufahren.</p>
+</body>
+</html>

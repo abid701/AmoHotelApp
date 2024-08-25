@@ -4,10 +4,17 @@
     <title>Zimmer Buchen</title>
     <link th:href="@{/styles/zimmerBuchen.css}" rel="stylesheet" />
     <script type="text/javascript" th:src="@{/javascript/zimmerBuchen.js}"></script>
+    <link th:href="@{/styles/darkMode.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/javascript/darkMode.js}"></script>
 </head>
 <body>
+<header>
+    Amo Hotel Rezeption <img th:src="@{/images/AmoHotel.png}" alt="AmoHotel Logo" width="2%">
+</header>
 
-<h2>Zimmer Buchen</h2>
+<button id="back">
+    <a th:href="@{/homePage}" class="back-link">Zurück</a>
+</button>
 
 <!-- Aktueller Buchungen zeigen -->
 <div th:each="buchung : ${buchungList}"
@@ -16,93 +23,135 @@
      class="buchung">
 </div>
 
-
 <div class="calendar-container">
-    <div id="calendar" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+
+    <div class="calendar-wrapper">
+        <h1 th:text="${currentMonth}"></h1>
+        <div id="calendar" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
-    <div id="calendar2" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+
+    <div class="calendar-wrapper">
+        <h1 th:text="${nextMonth}"></h1>
+        <div id="calendar2" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
-    <div id="calendar3" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+    <div class="calendar-wrapper">
+        <h1 th:text="${thirdMonth}"></h1>
+        <div id="calendar3" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
-    <div id="calendar4" class="calendar">
-        <div class="header">So</div>
-        <div class="header">Mo</div>
-        <div class="header">Di</div>
-        <div class="header">Mi</div>
-        <div class="header">Do</div>
-        <div class="header">Fr</div>
-        <div class="header">Sa</div>
+
+    <div class="calendar-wrapper">
+        <h1 th:text="${fourthMonth}"></h1>
+        <div id="calendar4" class="calendar">
+            <div class="header">So</div>
+            <div class="header">Mo</div>
+            <div class="header">Di</div>
+            <div class="header">Mi</div>
+            <div class="header">Do</div>
+            <div class="header">Fr</div>
+            <div class="header">Sa</div>
+        </div>
     </div>
 
 </div>
 
-    <h3>Buchung und Kundeninformationen</h3>
-<form method="POST" th:action="@{/zimmerBuchenUndKunden}">
-    <label for="kundenNr">Kunden Nummer:</label>
-    <input type="number" id="kundenNr" name="kundenNr" placeholder="Kunden Nummer" oninput="toggleKundeFields()" />
+<div class="container">
+    <form id="buchungForm" method="POST" th:action="@{/zimmerBuchenUndKunden}">
+        <div class="form">
+            <div class="title">Zimmer buchen</div>
+            <div class="info">
+                <label class="details" for="kundenNr">Kunden Nummer:</label>
+                <input type="number" id="kundenNr" name="kundenNr" placeholder="Kunden Nummer" oninput="toggleKundeFields()" />
+            </div>
+            <div id="kundeInfo">
+                <div class="info">
+                    <label class="details" for="vorname">Vorname:</label>
+                    <input type="text" id="vorname" name="vorname" placeholder="Vorname" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="nachname">Nachname:</label>
+                    <input type="text" id="nachname" name="nachname" placeholder="Nachname" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="info">
+                    <label class="details" for="adresse">Adresse:</label>
+                    <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
+                </div>
+            </div>
+            <div class="info">
+                <input type="hidden" id="zimmerNr" name="zimmerNr" th:value="${zimmer.zimmerNr}">
+                <input type="hidden" id="preisProNacht" name="preisProNacht" th:value="${zimmer.preisProNacht}">
+            </div>
+            <div class="info">
+                <label class="details" for="von">Von:</label>
+                <input type="date" id="von" name="von" required>
+            </div>
+            <div class="info">
+                <label class="details" for="bis">Bis:</label>
+                <input type="date" id="bis" name="bis" required>
+            </div>
+            <div class="info">
+                <label class="details" for="numberOfPeople">Anzahl der Personen:</label>
+                <input type="number" id="numberOfPeople" name="numberOfPeople" required>
+            </div>
+            <div class="info">
+                <label class="details" for="breakFast">Frühstück:</label>
+                <select name="breakFast" id="breakFast">
+                    <option value="Ja">Ja</option>
+                    <option value="Nein">Nein</option>
+                </select>
+            </div>
 
-    <div id="kundeInfo">
-        <label for="vorname">Vorname:</label>
-        <input type="text" id="vorname" name="vorname" placeholder="Vorname" required>
+            <div class="info">
+                <button id="submitButton" type="button" onclick="showConfirmation()">Buchen</button>
+            </div>
+        </div>
+    </form>
+    <p>10% Rabatt bei Buchung von mindestens 3 Tagen hintereinander</p>
+    <p id="error" th:text="${error}">Error</p>
+</div>
 
-        <label for="nachname">Nachname:</label>
-        <input type="text" id="nachname" name="nachname" placeholder="Nachname" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Email" required>
-
-        <label for="adresse">Adresse:</label>
-        <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-header">Buchung bestätigen</div>
+        <div class="modal-body" id="modalText">
+            <!-- Modal kommt aus dem Javascript -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="cancel" onclick="closeModal()">Abbrechen</button>
+            <button type="button" onclick="confirmSubmit()">Bestätigen</button>
+        </div>
     </div>
-
-    <input type="hidden" name="zimmerNr" th:value="${zimmer.zimmerNr}">
-
-    <label for="von">Von:</label>
-    <input type="date" id="von" name="von" required>
-
-    <label for="bis">Bis:</label>
-    <input type="date" id="bis" name="bis" required>
-
-    <label for="numberOfPeople">Anzahl der Personen</label>
-    <input type="number" id="numberOfPeople" name="numberOfPeople" required>
-
-    <label for="breakFast">Frühstück</label>
-    <select name="breakFast" id="breakFast">
-        <option value="Ja">Ja</option>
-        <option value="Nein">Nein</option>
-    </select>
-
-    <input type="submit" value="Buchen">
-</form>
-
-<p>10% Rabatt bei Buchung von mindestens 3 Tagen hintereinander</p>
-<p th:text="${error}">Error</p>
-<!-- Test  -->
-<p th:text="'Total: ' + ${total}"></p>
-
+</div>
 </body>
 </html>

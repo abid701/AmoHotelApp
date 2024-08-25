@@ -25,4 +25,3 @@ document.addEventListener("DOMContentLoaded", function () {
         imgElement.setAttribute("src", "/images/homePagePics/" + zimmerNr + ".jpg");
     });
 });
-
