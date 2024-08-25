@@ -163,35 +163,41 @@ document.addEventListener("DOMContentLoaded", function () {
    }
 });
 
-/* Popup für die Bestätigung */
 
- function showConfirmation() {
 
-        const kundenNr = document.getElementById('kundenNr').value;
-        const vorname = document.getElementById('vorname').value;
-        const nachname = document.getElementById('nachname').value;
-        const email = document.getElementById('email').value;
-        const adresse = document.getElementById('adresse').value;
-        const von = document.getElementById('von').value;
-        const bis = document.getElementById('bis').value;
-        const numberOfPeople = document.getElementById('numberOfPeople').value;
+function showConfirmation() {
+        const zimmerNr = document.getElementById('zimmerNr').value;
+        const preisProNacht = parseFloat(document.getElementById('preisProNacht').value);
+        const von = new Date(document.getElementById('von').value);
+        const bis = new Date(document.getElementById('bis').value);
+        const numberOfPeople = parseInt(document.getElementById('numberOfPeople').value);
         const breakFast = document.getElementById('breakFast').value;
 
 
-        const modalText = `
-            Kunden Nummer: ${kundenNr || 'Nicht angegeben'}<br>
-            Vorname: ${vorname}<br>
-            Nachname: ${nachname}<br>
-            Email: ${email}<br>
-            Adresse: ${adresse}<br>
-            Von: ${von}<br>
-            Bis: ${bis}<br>
+        const diffInTime = bis.getTime() - von.getTime();
+        const diffInDays = Math.ceil(diffInTime / (1000 * 3600 * 24));
+
+        // Calculate total
+        let total = preisProNacht;
+        if (diffInDays > 0) {
+            total += preisProNacht * diffInDays;
+        }
+        if (numberOfPeople > 1) {
+            total *= numberOfPeople;
+        }
+        if (breakFast === "Ja") {
+            const breakFastPrice = 10 * diffInDays * numberOfPeople;
+            total += breakFastPrice;
+        }
+
+        document.getElementById('modalText').innerHTML = `
+            Zimmer Nummer: ${zimmerNr}<br>
+            Von: ${document.getElementById('von').value}<br>
+            Bis: ${document.getElementById('bis').value}<br>
             Anzahl der Personen: ${numberOfPeople}<br>
-            Frühstück: ${breakFast}
+            Frühstück: ${breakFast}<br>
+            Gesamtbetrag: ${total.toFixed(2)} EUR
         `;
-        document.getElementById('modalText').innerHTML = modalText;
-
-
         document.getElementById('confirmationModal').style.display = 'block';
     }
 
@@ -200,11 +206,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function confirmSubmit() {
-        // Submit die form
         document.getElementById('buchungForm').submit();
     }
 
-    // Schließt die Modal, wenn benutzer draußen klickt.
     window.onclick = function(event) {
         const modal = document.getElementById('confirmationModal');
         if (event.target === modal) {
