@@ -47,6 +47,6 @@ That's it, you're done!
 
 Hopefully, it wasn't too complicated to set up the project, and the explanation was clear. If you still can't start the program for some reason, feel free to email me.
 
-All the code in this project was written by us, except for js and css files called lightbox, which were taken from [lokesh](https://github.com/lokesh/lightbox2). Special thanks to them for their contribution!
+All the code in this project was written by us, except for three files called lightbox, which were taken from [lokesh](https://github.com/lokesh/lightbox2). Special thanks to them for their contribution!
 
 
