@@ -39,7 +39,7 @@ To run this project on your computer, follow the steps below:
 4. **Login Credentials:**
    - Use the following credentials to log in:
      - **Username:** 'zeik'
-     - **Password:** 'InGetnInGetnInGetn'
+     - **Password:** 'InGetnInGetn'
 
 Copy and paste the username and password as shown above to proceed.
 
