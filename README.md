@@ -1,4 +1,4 @@
-- An application for hotel reception, developed using Spring Boot, in collaboration with Milad Akbari.
+## An application for hotel reception, developed using Spring Boot, in collaboration with Milad Akbari.
 
 ## Database Setup
 
