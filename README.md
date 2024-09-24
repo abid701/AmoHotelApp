@@ -22,5 +22,31 @@ While setting up MySQL Workbench, ensure that you set the username and password 
   - If you’re unsure how to import dump files, here’s a link to a tutorial on how to do it.
   https://www.youtube.com/watch?v=uyP46E0UA9I
 
+## How to Start the Project
+
+To run this project on your computer, follow the steps below:
+
+1. **Install IntelliJ IDEA (Community Edition):**
+   - Ensure that you have IntelliJ installed on your computer. While you can use other IDEs, using IntelliJ IDEA Community Edition will help avoid unnecessary issues.
+
+2. **Run the Program:**
+   - Once IntelliJ is installed, open the project and run it.
+
+3. **Access the Application:**
+   - After the project is running, open your browser and type  http://localhost:8081/
+   - You will see a login screen before continuing to the AmoHotelApp.
+
+4. **Login Credentials:**
+   - Use the following credentials to log in:
+     - **Username:** 'zeik'
+     - **Password:** 'InGetnInGetnInGetn'
+
+Copy and paste the username and password as shown above to proceed.
+
+That's it, you're done!
+
+Hopefully, it wasn't too complicated to set up the project, and the explanation was clear. If you still can't start the program for some reason, feel free to email me.
+
+All the code in this project was written by us, except for js and css files called lightbox, which were taken from [lokesh](https://github.com/lokesh/lightbox2). Special thanks to them for their contribution!
 
 
