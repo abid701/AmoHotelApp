@@ -12,7 +12,7 @@ If you already have MySQL Workbench set up and know how to use it, you can skip 
 While setting up MySQL Workbench, ensure that you set the username and password to 'root'.
 
 2. Set Up MySQL Connection:
-   - If you have MySQL Workbench installed, add a new MySQL connection.
+   - If you already have MySQL Workbench installed, add a new MySQL connection.
    - Set the username and password to 'root'.
 
 3. Import the Database Dump Files:
