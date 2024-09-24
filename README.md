@@ -21,6 +21,7 @@ While setting up MySQL Workbench, ensure that you set the username and password 
   - Ensure the database folder(schema) you import the files into is named 'amo_db'.
   - If you’re unsure how to import dump files, here’s a link to a tutorial on how to do it.
   https://www.youtube.com/watch?v=uyP46E0UA9I
+    Note: dump files are located in database direcotry of this repository.
 
 ## How to Start the Project
 
